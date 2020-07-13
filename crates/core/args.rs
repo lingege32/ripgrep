@@ -129,6 +129,7 @@ impl Args {
         // trying to parse config files. If a config file exists and has
         // arguments, then we re-parse argv, otherwise we just use the matches
         // we have here.
+        println!("{:?}",env::args_os());
         let early_matches = ArgMatches::new(clap_matches(env::args_os())?);
         set_messages(!early_matches.is_present("no-messages"));
         set_ignore_messages(!early_matches.is_present("no-ignore-messages"));
@@ -229,6 +230,10 @@ impl Args {
         let is_one_search = self.matches().is_one_search(self.paths());
         let threads = self.matches().threads()?;
         let one_thread = is_one_search || threads == 1;
+        //println!("self: {:#?}",self);
+        //println!("is_one_search: {:?}",is_one_search);
+        //println!("threads: {:?}",threads);
+        //println!("one_thread: {:?}",one_thread);
 
         Ok(if self.matches().is_present("pcre2-version") {
             Command::PCRE2Version
