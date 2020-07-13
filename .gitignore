@@ -1,5 +1,6 @@
 .*.swp
 tags
+*tags.vi
 target
 /grep/Cargo.lock
 /globset/Cargo.lock
